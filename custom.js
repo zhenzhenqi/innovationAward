@@ -19,14 +19,14 @@ function setup() {
 
 function draw() {
     background(360);
-    strokeWeight(1);
+    strokeWeight(15);
 
     for (var i = 0; i < allParticles.length - 1; i++) {
         var p = allParticles[i];
         p.move();
 
-        stroke(p.h, 360, 360);
-        var r = p.vel.mag() * 3 + 10;
+        stroke(red(p.h), green(p.h), blue(p.h));
+        var r = p.vel.mag() * 10 + 30;
         //        strokeWeight(p.vel.mag() * 1.25);
 
         ellipse(p.pos.x, p.pos.y, r, r);
@@ -49,10 +49,10 @@ function draw() {
                 continue;
             }
 
-            stroke(red(p1.h), green(p1.h), blue(p1.h), p1.vel.mag() + 60);
+            stroke(red(p1.h), green(p1.h), blue(p1.h), p1.vel.mag() + 30);
             var d = dist(p1.pos.x, p1.pos.y, p2.pos.x, p2.pos.y);
 
-            if (d < 200) {
+            if (d < 150) {
                 line(p1.pos.x, p1.pos.y, p2.pos.x, p2.pos.y);
             }
         }
@@ -69,7 +69,7 @@ function mousePressed() {
 }
 
 function mouseMoved() {
-    if (frameCount % 5 == 0) {
+    if (frameCount % 6 == 0) {
         allParticles.push(new Particle(mouseX, mouseY, pmouseX, pmouseY));
     }
 
