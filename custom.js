@@ -25,7 +25,8 @@ function draw() {
         var p = allParticles[i];
         p.move();
 
-        stroke(red(p.h), green(p.h), blue(p.h));
+        noStroke();
+        fill(red(p.h), green(p.h), blue(p.h), p.vel.mag() + 30);
         var r = p.vel.mag() * 10 + 30;
         //        strokeWeight(p.vel.mag() * 1.25);
 
@@ -49,10 +50,10 @@ function draw() {
                 continue;
             }
 
-            stroke(red(p1.h), green(p1.h), blue(p1.h), p1.vel.mag() + 30);
+            stroke(red(p1.h), green(p1.h), blue(p1.h), p1.vel.mag() + 10);
             var d = dist(p1.pos.x, p1.pos.y, p2.pos.x, p2.pos.y);
 
-            if (d < 150) {
+            if (d < 200) {
                 line(p1.pos.x, p1.pos.y, p2.pos.x, p2.pos.y);
             }
         }
