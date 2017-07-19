@@ -1,5 +1,5 @@
 var vehicles = [];
-var l = 400;
+var l = 1000;
 
 function setup() {
     createCanvas(displayWidth, displayHeight);
@@ -10,7 +10,7 @@ function setup() {
 }
 
 function draw() {
-    background(255, 255, 255, 20);
+    background(255, 255, 255, 5);
     for (var i = 0; i < vehicles.length; i++) {
         vehicles[i].update(mouseX, mouseY);
         vehicles[i].display();
@@ -22,7 +22,7 @@ function Vehicle() {
     this.location = createVector(mouseX + random(300), mouseY + random(300));
     this.acceleration = createVector(0, 0);
     this.velocity = createVector(0, -2);
-    this.speed = createVector(0, 0);
+    this.speed = createVector(10, 10);
     this.maxspeed = 8;
 
     // Method to update location
