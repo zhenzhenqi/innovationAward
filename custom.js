@@ -1,15 +1,25 @@
 var allParticles = [];
-var currentHue = 0;
+var hues = [];
+var hueIndex = 0;
+var currentHue = hues[hueIndex];
+
 
 function setup() {
     createCanvas(displayWidth, displayHeight);
-    colorMode(HSB, 360);
-    background(360, P2D);
+    //    colorMode(HSB, 360);
+    background(360);
+
+    hues.push(color(255, 0, 0));
+    hues.push(color(0, 0, 0));
+    hues.push(color(0, 0, 255));
+
+    currentHue = hues[hueIndex];
 }
 
 
 function draw() {
     background(360);
+    strokeWeight(1);
 
     for (var i = 0; i < allParticles.length - 1; i++) {
         var p = allParticles[i];
@@ -17,19 +27,18 @@ function draw() {
 
         stroke(p.h, 360, 360);
         var r = p.vel.mag() * 3 + 10;
-//        strokeWeight(p.vel.mag() * 1.25);
-        strokeWeight(1);
+        //        strokeWeight(p.vel.mag() * 1.25);
+
         ellipse(p.pos.x, p.pos.y, r, r);
 
-
-        //        if (p.vel.mag() < 0.1) {
-        //            allParticles.splice(i, 1);
-        //        }
+        if (p.vel.mag() < 0.1) {
+            allParticles.splice(0, 1);
+        }
     }
 
-    if (allParticles.length > 60) {
-        allParticles.splice(0, 10);
-    }
+    //    if (allParticles.length > 20) {
+    //        allParticles.splice(0, 10);
+    //    }
 
     for (var i = 0; i < allParticles.length; i++) {
         var p1 = allParticles[i];
@@ -40,13 +49,10 @@ function draw() {
                 continue;
             }
 
-            stroke(p1.h, 360, 360, p1.vel.mag() + 100);
-
-
+            stroke(red(p1.h), green(p1.h), blue(p1.h), p1.vel.mag() + 60);
             var d = dist(p1.pos.x, p1.pos.y, p2.pos.x, p2.pos.y);
 
-            if (d < 120) {
-                strokeWeight(1);
+            if (d < 200) {
                 line(p1.pos.x, p1.pos.y, p2.pos.x, p2.pos.y);
             }
         }
@@ -54,13 +60,31 @@ function draw() {
 }
 
 function mousePressed() {
-    currentHue = random(360);
-    console.log("pressed");
+    if (hueIndex == 2) {
+        hueIndex = 0;
+    } else {
+        hueIndex++;
+    }
+    currentHue = hues[hueIndex];
 }
 
+function mouseMoved() {
+    if (frameCount % 5 == 0) {
+        allParticles.push(new Particle(mouseX, mouseY, pmouseX, pmouseY));
+    }
 
-function mouseDragged() {
-    allParticles.push(new Particle(mouseX, mouseY, pmouseX, pmouseY));
+//    if (dist(mouseX, mouseY, pmouseX, pmouseY) < 5) {
+    if(frameCount%300==0){
+        if (hueIndex == 2) {
+            hueIndex = 0;
+        } else {
+            hueIndex++;
+        }
+        currentHue = hues[hueIndex];
+
+//    }
+    }
+
 }
 
 
