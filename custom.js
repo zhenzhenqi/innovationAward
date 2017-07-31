@@ -36,7 +36,7 @@ function draw() {
 //        }
     }
 
-        if (allParticles.length > 30) {
+        if (allParticles.length > 40) {
             allParticles.splice(0, 10);
         }
 
@@ -49,7 +49,7 @@ function draw() {
                 continue;
             }
 
-            stroke(red(p1.h), green(p1.h), blue(p1.h), p1.vel.mag() + 20);
+            stroke(red(p1.h), green(p1.h), blue(p1.h), p1.vel.mag() + 15);
             var d = dist(p1.pos.x, p1.pos.y, p2.pos.x, p2.pos.y);
 
             if (d < 200) {
