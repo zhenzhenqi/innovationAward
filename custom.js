@@ -1,4 +1,6 @@
+var margin = 70;
 var allParticles = [];
+var maxParticles = 40;
 var hues = [];
 var hueIndex = 0;
 var currentHue = hues[hueIndex];
@@ -9,11 +11,20 @@ function setup() {
     //    colorMode(HSB, 360);
     background(360);
 
-    hues.push(color(255, 0, 0, 30));
     hues.push(color(0, 0, 0, 30));
     hues.push(color(0, 0, 255, 30));
+    hues.push(color(255, 0, 0, 30));
 
     currentHue = hues[hueIndex];
+
+    for (var i = 0; i < maxParticles; i++) {
+        var tempX = random(margin, displayWidth / 2 - margin);
+        var tempY = random(displayHeight / 1.5, displayHeight/4);
+        var p_tempX = tempX + random(-5, 5);
+        var p_tempY = tempY + random(-5, 5);
+
+        allParticles.push(new Particle(tempX, tempY, p_tempX, p_tempY));
+    }
 }
 
 
@@ -31,14 +42,14 @@ function draw() {
 
         ellipse(p.pos.x, p.pos.y, r, r);
 
-//        if (p.vel.mag() < 0.1) {
-//            allParticles.splice(0, 1);
-//        }
+        //        if (p.vel.mag() < 0.1) {
+        //            allParticles.splice(0, 1);
+        //        }
     }
 
-        if (allParticles.length > 40) {
-            allParticles.splice(0, 10);
-        }
+    if (allParticles.length > 40) {
+        allParticles.splice(0, 10);
+    }
 
     for (var i = 0; i < allParticles.length; i++) {
         var p1 = allParticles[i];
@@ -69,12 +80,12 @@ function mousePressed() {
 }
 
 function mouseMoved() {
-    if (frameCount % 5 == 0) {
+    if (frameCount % 3 == 0) {
         allParticles.push(new Particle(mouseX, mouseY, pmouseX, pmouseY));
     }
 
-//    if (dist(mouseX, mouseY, pmouseX, pmouseY) < 5) {
-    if(frameCount%300==0){
+    //    if (dist(mouseX, mouseY, pmouseX, pmouseY) < 5) {
+    if (frameCount % 100 == 0) {
         if (hueIndex == 2) {
             hueIndex = 0;
         } else {
@@ -82,25 +93,28 @@ function mouseMoved() {
         }
         currentHue = hues[hueIndex];
 
-//    }
+        //    }
     }
 
+}
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
 }
 
 
 function Particle(x, y, px, py) {
     this.pos = createVector(x, y);
+    this.lastPos = createVector(x, y);
 
     this.acc = createVector(0, 0);
     this.h = currentHue;
 
-
-    this.lastPos = createVector(x, y);
     this.vel = createVector(px, py);
     this.vel.sub(this.lastPos);
     this.vel.rotate(radians(random(-75, 75)));
     this.vel.limit(8);
-    this.vel.mult(random(0.2, 0.75));
+    this.vel.mult(random(0.5, 0.75));
 
 
     this.move = function () {
