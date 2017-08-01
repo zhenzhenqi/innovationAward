@@ -80,12 +80,12 @@ function mousePressed() {
 }
 
 function mouseMoved() {
-//    if (frameCount % 3 == 0) {
+    if (frameCount % 2 == 0) {
         allParticles.push(new Particle(mouseX, mouseY, pmouseX, pmouseY));
-//    }
+    }
 
     //    if (dist(mouseX, mouseY, pmouseX, pmouseY) < 5) {
-    if (frameCount % 30 == 0) {
+    if (frameCount % 60 == 0) {
         if (hueIndex == 2) {
             hueIndex = 0;
         } else {
