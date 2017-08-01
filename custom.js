@@ -1,4 +1,4 @@
-var margin = 70;
+var margin = 150;
 var allParticles = [];
 var maxParticles = 40;
 var hues = [];
@@ -18,8 +18,8 @@ function setup() {
     currentHue = hues[hueIndex];
 
     for (var i = 0; i < maxParticles; i++) {
-        var tempX = random(margin, displayWidth / 2 - margin);
-        var tempY = random(displayHeight / 1.5, displayHeight/4);
+        var tempX = random(displayWidth*0.2, displayWidth*0.8);
+        var tempY = random(displayHeight*0.7, displayHeight*0.2);
         var p_tempX = tempX + random(-5, 5);
         var p_tempY = tempY + random(-5, 5);
 
@@ -80,12 +80,12 @@ function mousePressed() {
 }
 
 function mouseMoved() {
-    if (frameCount % 3 == 0) {
+//    if (frameCount % 3 == 0) {
         allParticles.push(new Particle(mouseX, mouseY, pmouseX, pmouseY));
-    }
+//    }
 
     //    if (dist(mouseX, mouseY, pmouseX, pmouseY) < 5) {
-    if (frameCount % 100 == 0) {
+    if (frameCount % 30 == 0) {
         if (hueIndex == 2) {
             hueIndex = 0;
         } else {
