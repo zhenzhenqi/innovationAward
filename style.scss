@@ -1,6 +1,8 @@
 $screen-xs-max: 768px;
-$blue_header: rgb(28, 26, 168);
+$blue_header: rgb(29, 28, 116);
 $charcol_bg: rgb(66, 66, 68);
+$grey_footer: rgb(229, 229, 229);
+$white_brand: rgb(213, 213, 213);
 h1 {
     font-family: 'Roboto', sans-serif;
     margin-top: 1em;
@@ -14,7 +16,7 @@ h1 {
 h3 {
     font-family: 'Roboto Slab', serif;
     color: $blue_header;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
 }
 
@@ -25,48 +27,32 @@ canvas {
     width: 100vw;
     height: 100vh;
     z-index: -10;
+    @media (max-width: $screen-xs-max) {
+        display: none;
+    }
 }
 
 body {
     font: 400 15px/1.8 'Roboto', sans-serif;
-    border-style: solid;
-    border-width: 0.5em;
-    border-color: $blue_header;
-    
+    color: $blue_header;
     padding-top: 120px;
     @media (max-width: $screen-xs-max) {
         padding-top: 60px;
     }
 }
 
-.container {
-
-}
-
+//landing page body layout is different from rest of site
 #myHome {
     width: 100vw;
     height: 100vh;
-}
-
-#title {
-    margin-top: 30vh;
-    div {
-        padding: 5px;
+    border-style: solid;
+    border-width: 0.8em;
+    border-color: $blue_header;
+    
+    .btn{
+        font-size: 17px;
+        margin-top:2em;
     }
-}
-
-#title img {
-    padding-top: 2em;
-    margin: 0 auto;
-    display: block;
-    width: 300px;
-}
-
-#title i {
-    font-size: 5px;
-    position: relative;
-    bottom: 4px;
-    padding: 0 3px 0 6px;
 }
 
 .noselect {
@@ -85,54 +71,20 @@ body {
                                   supported by Chrome and Opera */
 }
 
-
-
-.bg-1 {
-    background: $charcol_bg;
-    color: white;
-}
-
-.bg-1 h1 {
-    color: #fff;
-}
-
-.bg-1 p {
-    //    font-style: italic;
-}
-
-.list-group-item:first-child {
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-}
-
-.list-group-item:last-child {
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.thumbnail {
-    padding: 15px;
-    border: none;
+.btn {
+    color: $white_brand;
     border-radius: 0;
-}
-
-.thumbnail p {
-    margin-top: 15px;
-    color: #555;
-}
-
-.modal-header,
-h4,
-.close {
-    background-color: #333;
-    color: #fff !important;
-    text-align: center;
-    font-size: 30px;
-}
-
-.modal-header,
-.modal-body {
-    padding: 40px 50px;
+    display: block;
+    margin: 10px 0;
+    padding-right: 0;
+    text-transform: uppercase;
+    :hover {
+        color: white;
+    }
+    span {
+        background-color: $blue_header;
+        padding: 0.6em;
+    }
 }
 
 .nav-tabs li a {
@@ -151,12 +103,16 @@ h4,
 
 .navbar li a,
 .navbar .navbar-brand {
-    color: #d5d5d5 !important;
+    color: $white_brand !important;
 }
 
 .navbar li a,
 .navbar .navbar-brand:hover {
     color: white !important;
+}
+
+.navbar-nav li a {
+    color: $white_brand !important;
 }
 
 .navbar-nav li a:hover {
@@ -172,51 +128,83 @@ h4,
     border-color: transparent;
 }
 
-.open .dropdown-toggle {
-    color: #fff;
-    background-color: #555 !important;
+.bg-1 {
+    background: $blue_header;
+    color: white;
+    h1 {
+        color: #fff;
+    }
 }
 
-.dropdown-menu li a {
-    color: #000 !important;
-}
-
-.dropdown-menu li a:hover {
-    background-color: red !important;
-}
-
-footer a {
-    color: #f5f5f5;
-    position: absolute;
-    bottom: 0;
-}
-
-footer a:hover {
-    color: #777;
-    text-decoration: none;
-}
-
-footer {
-    background-color: #b5b5b5;
-    color: #0b24f9;
-    padding: 32px;
-//    position: absolute;
-//    bottom: 0;
-}
-
-footer a {
-    color: #f5f5f5;
-}
-
-footer a:hover {
-    color: #777;
-    text-decoration: none;
-}
-
-.form-control {
+.thumbnail {
+    padding: 15px;
+    border: none;
     border-radius: 0;
 }
 
-textare a {
-    resize: none;
+.thumbnail p {
+    margin-top: 15px;
+    color: $blue_header;
+}
+
+#title {
+    margin-top: 10vh;
+    div {
+        padding: 5px;
+    }
+    img {
+        padding-top: 2em;
+        margin: 0 auto;
+        display: block;
+        width: 300px;
+    }
+    i {
+        font-size: 5px;
+        position: relative;
+        bottom: 4px;
+        padding: 0 3px 0 6px;
+    }
+}
+
+footer {
+    p {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 900;
+    }
+    background-color: $grey_footer;
+    color: black;
+    padding: 5em 0;
+    i {
+        padding-right: 3px;
+    }
+    .btn {
+        text-align: right;
+        span {
+            background-color: black;
+            padding: 8px;
+        }
+    }
+    .col-sm-6 {
+        padding: 0;
+    }
+    #contacts {
+        div {
+            padding: 1em 0;
+        }
+        i {
+            padding: 5px;
+        }
+    }
+    #copyright {
+        padding-top: 4em;
+    }
+    @media (max-width: $screen-xs-max) {
+        padding: 2em 0;
+        p,
+        a,
+        .btn {
+            text-align: center;
+        }
+    }
 }

@@ -85,7 +85,7 @@ function mouseMoved() {
     }
 
     //    if (dist(mouseX, mouseY, pmouseX, pmouseY) < 5) {
-    if (frameCount % 60 == 0) {
+    if (frameCount % 100 == 0) {
         if (hueIndex == 2) {
             hueIndex = 0;
         } else {
