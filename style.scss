@@ -3,6 +3,8 @@
     $charcol_bg: rgb(66, 66, 68);
     $grey_footer: rgb(229, 229, 229);
     $white_brand: rgb(213, 213, 213);
+    $spacing_main: 15em;
+
     h1 {
         font-family: 'Roboto', sans-serif;
         letter-spacing: 2px;
@@ -10,6 +12,7 @@
         font-weight: 500;
         color: $blue_header;
         text-transform: uppercase;
+        padding-bottom: 1em;
     }
     
     h3 {
@@ -17,6 +20,21 @@
         color: $blue_header;
         font-size: 18px;
         font-weight: 700;
+    }
+
+    h4 {
+        line-height: 1.5em;
+        font-size: 1.3em;
+    }
+
+
+    p{
+        font-family: 'Roboto', sans-serif;
+        color: $blue_header;
+        font-size: 15px;
+        line-height: 1.5em;
+        font-weight: 400 !important;
+    
     }
     
     canvas {
@@ -32,14 +50,18 @@
     }
     
     body {
-        font: 400 15px/1.8 'Roboto', sans-serif;
+        font: 400 15px 'Roboto', sans-serif;
         color: $blue_header;
-        padding-top: 6em;
+        padding-top: $spacing_main;
         @media (max-width: $screen-xs-max) {
             padding-top: 60px;
         }
         min-height: 100vh;
     }
+
+a:visited{
+//    color: white;
+}
     
     //landing page body layout is different from rest of site
     #myHome {
@@ -71,11 +93,6 @@
         user-select: none;
         /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
-    }
-    
-    a {
-        color: $blue_header;
-        text-decoration: underline;
     }
     
     .btn {
@@ -146,14 +163,14 @@
     
     //about section white bg
     .bg-2 {
-        padding-left: 3em;
+        padding-left: 5em;
         @media (max-width: $screen-xs-max) {
             padding-left: 15px;
         }
     }
     
     .bg-2-right {
-        padding-right: 3em;
+        padding-right: 5em;
         @media (max-width: $screen-xs-max) {
             padding-right: 15px;
         }
@@ -175,7 +192,7 @@
     
     //student section question styling
     .thumbnail {
-        padding: 15px;
+        padding: 30px 50px;
         border: none;
         border-radius: 0;
     }
@@ -218,22 +235,24 @@
             opacity: 0.85;
         }
         >div {
-            margin-bottom: 6em;
+            margin-bottom: $spacing_main;
         }
-        //        > div:nth-child(5) {
-        //            margin-bottom: 6em;
-        //        }
+
     }
     
     #students {
         >div {
-            margin-bottom: 6em;
+            margin-bottom: $spacing_main;
         }
     }
     
     #contact {
         >div {
-            margin-bottom: 3em;
+            margin-bottom: $spacing_main;
+        }
+        #signup a{
+            color: $blue_header;
+            text-decoration: underline;
         }
     }
     
@@ -244,6 +263,8 @@
             margin: 0;
             font-size: 15px;
             font-weight: 900;
+            color: black;
+            font-weight: 900 !important;
         }
         background-color: $grey_footer;
         color: black;
@@ -256,7 +277,9 @@
             span {
                 background-color: black;
                 padding: 8px;
+            font-weight: 900 !important;
             }
+            
         }
         .col-sm-6 {
             padding: 0;
