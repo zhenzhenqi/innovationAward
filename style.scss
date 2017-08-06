@@ -59,9 +59,7 @@
         min-height: 100vh;
     }
 
-a:visited{
-//    color: white;
-}
+
     
     //landing page body layout is different from rest of site
     #myHome {
@@ -73,6 +71,7 @@ a:visited{
         .btn {
             font-size: 17px;
             margin-top: 2em;
+            font-weight: 500;
         }
         h1 {
             margin-top: 1em;
@@ -208,7 +207,6 @@ a:visited{
     
     //landing page title section
     #title {
-        margin-top: 10vh;
         div {
             padding: 5px;
         }
